@@ -4,16 +4,13 @@ on:
   push:
     branches: ["main"]
 
-  # يتيح لك تشغيل هذا السكربت يدوياً إذا احتجت لذلك
   workflow_dispatch:
 
-# إعطاء الصلاحيات اللازمة للسكربت لنشر الملفات
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# لضمان عدم وجود أكثر من عملية نشر تعمل في نفس الوقت
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -28,8 +25,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: '24'
 
       - name: Install dependencies
         run: npm install
