@@ -2,28 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
-/* إعدادات إضافية لمنع تمرير الشاشة أثناء اللعب وضبط الخلفية */
 body, html {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
+  background-color: #0a0c09; /* لون خلفية أغمق ليبرز اللعبة */
   overflow: hidden;
-  background-color: #171a14;
-  touch-action: none; /* لمنع إيماءات التمرير على الجوال أثناء اللعب */
+  touch-action: none; 
 }
 
 #root {
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-/* خط كلاسيكي للشاشة */
 .font-mono {
   font-family: 'Share Tech Mono', monospace;
 }
 
-/* خط للنصوص العادية */
 .font-cairo {
   font-family: 'Cairo', sans-serif;
+}
+
+/* تأثيرات حركية للنجوم (التقييم) */
+@keyframes star-pop {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.star-animate {
+  animation: star-pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  opacity: 0;
+}
+
+.star-delay-1 { animation-delay: 0.2s; }
+.star-delay-2 { animation-delay: 0.4s; }
+.star-delay-3 { animation-delay: 0.6s; }
+
+/* تأثير اللمعان للشريط الإعلاني */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.shimmer-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+  animation: shimmer 2.5s infinite;
 }
