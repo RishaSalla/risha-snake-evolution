@@ -2,14 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* إعدادات الشاشة الأساسية لمنع الاقتطاع والتمرير العشوائي على متصفحات الجوال */
 body, html {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
-  background-color: #0a0c09; /* لون خلفية أغمق ليبرز اللعبة */
-  overflow: hidden;
-  touch-action: none; 
+  height: 100%; /* استخدام 100% يمنع الاقتطاع الذي يحدث مع 100vh في سفاري وكروم للجوال */
+  background-color: #0a0c09;
+  overflow: hidden; /* يمنع ظهور شريط التمرير */
+  touch-action: none; /* يمنع سحب أو تحديث الصفحة بالخطأ أثناء اللعب */
 }
 
 #root {
@@ -19,6 +20,7 @@ body, html {
   flex-direction: column;
 }
 
+/* الخطوط */
 .font-mono {
   font-family: 'Share Tech Mono', monospace;
 }
@@ -27,7 +29,7 @@ body, html {
   font-family: 'Cairo', sans-serif;
 }
 
-/* تأثيرات حركية للنجوم (التقييم) */
+/* تأثيرات حركية للنجوم عند الفوز بالمرحلة */
 @keyframes star-pop {
   0% { transform: scale(0); opacity: 0; }
   50% { transform: scale(1.2); }
@@ -43,7 +45,7 @@ body, html {
 .star-delay-2 { animation-delay: 0.4s; }
 .star-delay-3 { animation-delay: 0.6s; }
 
-/* تأثير اللمعان للشريط الإعلاني */
+/* تأثير اللمعان الجذاب للشريط الإعلاني الخاص بمتجر ريشة */
 @keyframes shimmer {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
